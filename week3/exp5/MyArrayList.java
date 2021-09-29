@@ -16,27 +16,39 @@ public class MyArrayList {
 
     // 插入元素
     public void insertElem(int position, String str) {
-        if (position < 1 || position >= size) {
+        if (position < 1) {
             System.out.println("插入位置不合法");
             return;
         }
+        // 若线性表空间不足，扩容数组
         if (size >= CAPACITY) {
             data = Arrays.copyOf(data, CAPACITY + 10);
             CAPACITY += 10;
         }
-        int j = size - 1;
-        while (j >= position) {
-            data[j] = data[j - 1];// 插入位置及之后的元素右移
-            j--;
+
+        if (position > size + 1) {
+            System.out.println("输入位置超出当前线性表长度，自动将元素插入末尾");
+            endInsert(str);
+        } else {
+            int j = size;
+            while (j > position - 1) {
+                data[j] = data[j - 1];// 插入位置及之后的元素右移
+                j--;
+            }
+            data[j] = str;
+            size++;
         }
-        data[j] = str;
-        size++;
     }
 
+    /*
+    * ==是进行对象的地址值的比较，字符串的内容比较，可以equals()方法
+    * 
+    * public boolean equals(Object)：参数可以是任何对象，只有参数是一个字符串的并且内容相同的才会true，否则返回false
+    */
     // 查找
     public int search(String str) {
         for (int i = 0; i < size; i++) {
-            if (str == data[i]) {
+            if (data[i].equals(str)) {
                 return i;
             }
         }
@@ -45,20 +57,21 @@ public class MyArrayList {
 
     // 遍历线性表
     public void visit() {
-        for (int i = 0; i < data.length; i++) {
+        System.out.println("结果为：");
+        for (int i = 0; i < size; i++) {
             System.out.println(data[i]);
         }
     }
 
     // 删除元素
     public void deleteElem(int position) {
-        if (position < 1 || position >= size) {
+        if (position < 1 || position > size) {
             System.out.println("删除位置不合法");
             return;
         }
         int j = position - 1;
-        while (j >= position) {
-            data[j] = data[j + 1];// 删除位置及前的元素前移
+        while (j <= size) {
+            data[j] = data[j + 1];// 删除位置及之后的元素前移
             j++;
         }
         size--;
@@ -88,7 +101,7 @@ public class MyArrayList {
 
     // 替换元素
     public void replaceElem(int position, String str) {
-        data[position] = str;
+        data[position - 1] = str;
     }
 
     // 获取元素
@@ -97,7 +110,7 @@ public class MyArrayList {
             System.out.println("输入位置不合法");
             return "Error";
         }
-        return data[position];
+        return data[position - 1];
     }
 
     // 判断是否包含某个元素
@@ -120,11 +133,7 @@ public class MyArrayList {
 
     // 末尾插入元素
     public void endInsert(String str) {
-        if (size >= CAPACITY) {
-            data = Arrays.copyOf(data, CAPACITY + 10);
-            CAPACITY += 10;
-        }
-        data[size - 1] = str;
+        data[size] = str;
         size++;
     }
 
