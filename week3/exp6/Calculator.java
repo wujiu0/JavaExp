@@ -1,4 +1,4 @@
-package week3.exp5;
+package week3.exp6;
 
 import java.util.Scanner;
 

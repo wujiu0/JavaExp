@@ -42,7 +42,7 @@ public class Box {
         this.height = height;
     }
 
-    public float getVolumn() {
+    public float getVolume() {
         return length * width * height;
     }
 

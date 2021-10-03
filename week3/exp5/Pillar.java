@@ -9,7 +9,7 @@ public class Pillar {
         this.height = height;
     }
 
-    public double getVolumn() {
+    public double getVolume() {
 
         return bottom.getArea() * height;
     }

@@ -7,19 +7,12 @@ public class Ball {
         this.bottom = bottom;
     }
 
-    public double getVolumn() {
+    public double getVolume() {
         return 4.0/ 3.0 * Math.PI * Math.pow(bottom.getR(), 3);
 
         // return Math.PI * Math.pow(bottom.getR(), 3) * 4 / 3;
 
-        // return 1.33 * Math.PI * Math.pow(bottom.getR(), 3);
+        // return 4 / 3 * Math.PI * Math.pow(bottom.getR(), 3);//首先计算4/3的结果是整型1，会使得结果出错
     }
 
-    // public double getVolumn() {
-    // double result = Math.PI * Math.pow(bottom.getR(), 3);
-
-    // // return 4 / 3 * result;
-
-    // return result * 4 / 3;
-    // }
 }

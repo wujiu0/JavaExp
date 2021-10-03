@@ -11,7 +11,7 @@ public class BottleTest {
 
         Bottle bottle = new Bottle(pillar, ball);
 
-        System.out.println("上半部分体积：" + bottle.upperPart.getVolumn() + "下半部分体积：" + bottle.lowerPart.getVolumn()
-                + "瓶子的体积是：" + bottle.getVolumn());
+        System.out.println("上半部分体积：" + bottle.upperPart.getVolume() + "下半部分体积：" + bottle.lowerPart.getVolume()
+                + "瓶子的体积是：" + bottle.getVolume());
     }
 }

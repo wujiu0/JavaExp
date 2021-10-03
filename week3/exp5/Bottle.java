@@ -9,8 +9,8 @@ public class Bottle {
         this.lowerPart = lowerPart;
     }
 
-    public double getVolumn() {
-        return upperPart.getVolumn() + lowerPart.getVolumn();
+    public double getVolume() {
+        return upperPart.getVolume() + lowerPart.getVolume();
     }
 
 }
