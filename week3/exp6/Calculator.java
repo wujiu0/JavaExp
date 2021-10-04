@@ -9,6 +9,7 @@ public class Calculator {
 
     public Calculator() {
         Scanner sc = new Scanner(System.in);
+        System.out.println("请输入一个表达式，数字与运算符之间使用空格隔开（例如32 + 54）：");
         this.num1 = sc.nextInt();
         this.op = sc.next().charAt(0);
         this.num2 = sc.nextInt();

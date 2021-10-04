@@ -1,23 +1,22 @@
 package week3.exp6;
 
 public class CommodityDataSet {
-    private Commodity commodity[];
+    private Commodity commodities[];
 
     public CommodityDataSet() {
     }
 
-    
-    public Commodity[] getCommodity() {
-        return commodity;
+    public Commodity[] getCommodities() {
+        return commodities;
     }
 
-    public void setCommodity(Commodity[] commodity) {
-        this.commodity = commodity;
+    public void setCommodities(Commodity[] commodities) {
+        this.commodities = commodities;
     }
 
     // 商品信息录入
     public void name() {
-        
+
     }
     // 商品信息修改
 
