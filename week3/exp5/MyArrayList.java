@@ -124,7 +124,7 @@ public class MyArrayList {
     // 反向查找
     public int searchReverse(String str) {
         for (int i = size - 1; i > 0; i--) {
-            if (str == data[i]) {
+            if (data[i].equals(str)) {
                 return i;
             }
         }
