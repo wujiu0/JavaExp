@@ -4,6 +4,10 @@ public class Pet {
     protected String name;
     protected String color;
     protected String breed;
+    
+
+    public Pet() {
+    }
 
     public Pet(String name, String color, String breed) {
         this.name = name;

@@ -2,6 +2,10 @@ package week4;
 
 public class Dog extends Pet {
 
+    
+    public Dog() {
+    }
+
     public Dog(String name, String color, String breed) {
         super(name, color, breed);
     }
