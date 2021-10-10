@@ -22,4 +22,13 @@ public class BookDataSet {
         this.books = books;
     }
 
+    public Book queryByName(String name) {
+        for (int i = 0; i < books.length; i++) {
+            if (books[i].getName() == name) {
+                return books[i];
+            }
+        }
+        return null;
+    }
+
 }

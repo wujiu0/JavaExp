@@ -1,7 +1,5 @@
 package week1.exp2;
 
-import java.util.Scanner;
-
 public class Triplet {
     float[] v = new float[3];
 
@@ -15,13 +13,10 @@ public class Triplet {
         v[2] = v2;
     }
 
-    public void init() {
-        Scanner sc = new Scanner(System.in);
-        System.out.println("请输入三个实数：");
-        v[0] = sc.nextFloat();
-        v[1] = sc.nextFloat();
-        v[2] = sc.nextFloat();
-        // sc.close();
+    public void init(float v1, float v2, float v3) {
+        v[0] = v1;
+        v[1] = v2;
+        v[2] = v3;
     }
 
     // 取分量

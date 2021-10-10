@@ -36,15 +36,15 @@ public class MyArrayListTest {
             case 0:
                 return 0;
             case 1:
-                list.empty();
+                list.clear();
                 break;
             case 2:
-                System.out.println("线性表当前的长度为：" + list.length());
+                System.out.println("线性表当前的长度为：" + list.size());
                 System.out.println("请输入插入位置：");
                 num = sc.nextInt();
                 System.out.println("请输入元素：");
                 str = sc.next();
-                list.insertElem(num, str);
+                list.add(num, str);
                 break;
             case 3:
                 System.out.println("请输入删除位置：");
@@ -54,10 +54,10 @@ public class MyArrayListTest {
             case 4:
                 System.out.println("请输入查找的元素：");
                 str = sc.next();
-                if (list.search(str) < 0) {
+                if (list.indexOf(str) < 0) {
                     System.out.println("线性表中不存在" + str);
                 } else {
-                    int result = list.search(str) + 1;
+                    int result = list.indexOf(str) + 1;
                     System.out.println(str + "在线性表中的位置是：" + result);
                 }
                 break;
@@ -71,13 +71,13 @@ public class MyArrayListTest {
                 num = sc.nextInt();
                 System.out.println("请输入要换的值：");
                 str = sc.next();
-                list.replaceElem(num, str);
+                list.set(num, str);
                 break;
             case 7:
                 list.visit();
                 break;
             case 8:
-                System.out.println("线性表当前的长度为：" + list.length());
+                System.out.println("线性表当前的长度为：" + list.size());
             default:
                 System.out.println("输入出错");
                 break;

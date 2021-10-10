@@ -3,19 +3,26 @@ package week3.exp5;
 import java.util.Arrays;
 
 public class MyArrayList {
-    String[] data;
-    int size;// 长度
-    int CAPACITY;// 容量
+    private String[] data;
+    private int size;// 长度
+    private /* final */ int CAPACITY;// 容量
+
+    public MyArrayList() {
+        init();
+    }
+
+    public MyArrayList(String[] data) {
+        this.data = data;
+    }
 
     // 初始化线性表
     public void init() {
         data = new String[10];
-        size = 0;
         CAPACITY = data.length;
     }
 
     // 插入元素
-    public void insertElem(int position, String str) {
+    public void add(int position, String str) {
         if (position < 1) {
             System.out.println("插入位置不合法");
             return;
@@ -28,7 +35,7 @@ public class MyArrayList {
 
         if (position > size + 1) {
             System.out.println("输入位置超出当前线性表长度，自动将元素插入末尾");
-            endInsert(str);
+            add(str);
         } else {
             int j = size;
             while (j > position - 1) {
@@ -40,13 +47,18 @@ public class MyArrayList {
         }
     }
 
+    // 末尾插入元素
+    public void add(String str) {
+        add(size, str);
+    }
+
     /*
-    * ==是进行对象的地址值的比较，字符串的内容比较，可以equals()方法
-    * 
-    * public boolean equals(Object)：参数可以是任何对象，只有参数是一个字符串的并且内容相同的才会true，否则返回false
-    */
+     * ==是进行对象的地址值的比较，字符串的内容比较，可以equals()方法
+     * 
+     * public boolean equals(Object)：参数可以是任何对象，只有参数是一个字符串的并且内容相同的才会true，否则返回false
+     */
     // 查找
-    public int search(String str) {
+    public int indexOf(String str) {
         for (int i = 0; i < size; i++) {
             if (data[i].equals(str)) {
                 return i;
@@ -78,20 +90,17 @@ public class MyArrayList {
     }
 
     // 求长度
-    public int length() {
+    public int size() {
         return size;
     }
 
     // 判空
     public boolean isEmpty() {
-        if (size == 0) {
-            return true;
-        }
-        return false;
+        return size == 0;
     }
 
     // 清空线性表
-    public void empty() {
+    public void clear() {
         for (int i = 0; i < size; i++) {
             data[i] = null;
         }
@@ -100,7 +109,7 @@ public class MyArrayList {
     }
 
     // 替换元素
-    public void replaceElem(int position, String str) {
+    public void set(int position, String str) {
         data[position - 1] = str;
     }
 
@@ -114,27 +123,21 @@ public class MyArrayList {
     }
 
     // 判断是否包含某个元素
-    public boolean isIncludeElem(String str) {
-        if (this.search(str) == -1) {
+    public boolean contains(String str) {
+        if (this.indexOf(str) == -1) {
             return false;
         }
         return true;
     }
 
     // 反向查找
-    public int searchReverse(String str) {
+    public int lastIndexOf(String str) {
         for (int i = size - 1; i > 0; i--) {
             if (data[i].equals(str)) {
                 return i;
             }
         }
         return -1;
-    }
-
-    // 末尾插入元素
-    public void endInsert(String str) {
-        data[size] = str;
-        size++;
     }
 
 }

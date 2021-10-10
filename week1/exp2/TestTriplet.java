@@ -7,7 +7,7 @@ public class TestTriplet {
 
     public static void main(String[] args) {
         Triplet t1 = new Triplet();
-        t1.init();
+        t1.init(sc.nextFloat(), sc.nextFloat(), sc.nextFloat());
         int flag = 1;
         while (flag == 1) {
             flag = menu(t1);
