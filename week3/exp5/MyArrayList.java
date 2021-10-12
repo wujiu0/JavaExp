@@ -49,7 +49,7 @@ public class MyArrayList {
 
     // 末尾插入元素
     public void add(String str) {
-        add(size, str);
+        add(size + 1, str);
     }
 
     /*
@@ -110,12 +110,16 @@ public class MyArrayList {
 
     // 替换元素
     public void set(int position, String str) {
+        if (position < 1 || position > size) {
+            System.out.println("输入位置不合法");
+            return;
+        }
         data[position - 1] = str;
     }
 
     // 获取元素
     public String getElem(int position) {
-        if (position < 1 || position >= size) {
+        if (position < 1 || position > size) {
             System.out.println("输入位置不合法");
             return "Error";
         }

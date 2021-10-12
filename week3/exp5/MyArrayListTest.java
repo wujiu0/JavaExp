@@ -13,7 +13,6 @@ public class MyArrayListTest {
             flag = menu(list);
         }
         sc.close();
-
     }
 
     public static int menu(MyArrayList list) {
