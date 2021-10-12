@@ -7,10 +7,9 @@ public class SimulatorTest {
 
         Pet p = new Dog();
         Simulator.playSound(p);
-        
+
         p = new Cat();
         Simulator.playSound(p);
-        
-        
+
     }
 }
