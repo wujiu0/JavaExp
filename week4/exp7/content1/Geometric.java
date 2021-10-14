@@ -10,7 +10,8 @@ public class Geometric {
     public Geometric(String color, boolean filled) {
         this.color = color;
         this.filled = filled;
-        date = new Date(System.currentTimeMillis());
+        // date = new Date(System.currentTimeMillis());
+        date = new Date();
     }
 
     public String getColor() {
