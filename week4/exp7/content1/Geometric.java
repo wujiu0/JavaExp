@@ -1,15 +1,15 @@
 package week4.exp7.content1;
 
-import java.sql.Date;
+import java.util.Date;
 
 public class Geometric {
     private String color;
-    private boolean filed;
+    private boolean filled;
     private Date date;
 
-    public Geometric(String color, boolean filed) {
+    public Geometric(String color, boolean filled) {
         this.color = color;
-        this.filed = filed;
+        this.filled = filled;
         date = new Date(System.currentTimeMillis());
     }
 
@@ -22,11 +22,11 @@ public class Geometric {
     }
 
     public boolean isFiled() {
-        return filed;
+        return filled;
     }
 
-    public void setFiled(boolean filed) {
-        this.filed = filed;
+    public void setFiled(boolean filled) {
+        this.filled = filled;
     }
 
     public Date getDate() {

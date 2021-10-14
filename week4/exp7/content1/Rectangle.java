@@ -4,8 +4,8 @@ public class Rectangle extends Geometric {
     private float length;
     private float width;
 
-    public Rectangle(String color, boolean filed, float length, float width) {
-        super(color, filed);
+    public Rectangle(String color, boolean filled, float length, float width) {
+        super(color, filled);
         this.length = length;
         this.width = width;
     }

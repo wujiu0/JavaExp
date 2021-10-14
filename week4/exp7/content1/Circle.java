@@ -3,8 +3,8 @@ package week4.exp7.content1;
 public class Circle extends Geometric {
     private float radius;
 
-    public Circle(String color, boolean filed, float radius) {
-        super(color, filed);
+    public Circle(String color, boolean filled, float radius) {
+        super(color, filled);
         this.radius = radius;
     }
 
