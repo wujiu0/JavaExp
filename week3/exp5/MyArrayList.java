@@ -13,6 +13,7 @@ public class MyArrayList {
 
     public MyArrayList(String[] data) {
         this.data = data;
+        CAPACITY = data.length;
     }
 
     // 初始化线性表
