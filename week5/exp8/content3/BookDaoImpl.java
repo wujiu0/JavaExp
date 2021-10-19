@@ -1,29 +1,36 @@
 package week5.exp8.content3;
 
 public class BookDaoImpl implements BookDao {
+    BookDataSet bds = new BookDataSet();
 
-    @Override
-    public Book queryByAuthor(Book[] books, String author) {
-        // TODO Auto-generated method stub
-        return null;
+    public Book[] queryBooks() {
+        return bds.getBooks();
     }
 
     @Override
-    public Book queryByCategory(Book[] books, String category) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-    @Override
-    public Book queryById(Book[] books, String id) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-    @Override
-    public Book queryByName(Book[] books, String name) {
+    public boolean add(Book book) {
+        Book[] books = bds.getBooks();
         for (int i = 0; i < books.length; i++) {
-            if (books[i].getName().equals(name)) {
+            if (books[i] == null) {
+                books[i] = book;
+                return true;
+            }
+        }
+        return false;
+    }
+
+    @Override
+    public boolean modify(int index, Book book) {
+        Book[] books = bds.getBooks();
+        books[index] = book;
+        return true;
+    }
+
+    @Override
+    public Book queryByAuthor(String author) {
+        Book[] books = bds.getBooks();
+        for (int i = 0; i < books.length; i++) {
+            if (books[i].getAuthor().equals(author)) {
                 return books[i];
             }
         }
@@ -31,14 +38,24 @@ public class BookDaoImpl implements BookDao {
     }
 
     @Override
-    public boolean add(Book book) {
-        // TODO Auto-generated method stub
-        return false;
+    public Book queryById(String id) {
+        Book[] books = bds.getBooks();
+        for (int i = 0; i < books.length; i++) {
+            if (books[i].getBid().equals(id)) {
+                return books[i];
+            }
+        }
+        return null;
     }
 
     @Override
-    public Book[] getBooks() {
-        // TODO Auto-generated method stub
+    public Book queryByName(String name) {
+        Book[] books = bds.getBooks();
+        for (int i = 0; i < books.length; i++) {
+            if (books[i].getName().equals(name)) {
+                return books[i];
+            }
+        }
         return null;
     }
 

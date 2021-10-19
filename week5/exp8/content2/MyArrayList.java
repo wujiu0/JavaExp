@@ -7,6 +7,7 @@ public class MyArrayList extends MyAbstractList {
     private int capacity;
 
     public MyArrayList() {
+        init();
     }
 
     public MyArrayList(int size, String[] data) {

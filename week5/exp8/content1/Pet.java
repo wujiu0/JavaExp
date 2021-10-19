@@ -5,8 +5,6 @@ public abstract class Pet {
     private String color;
     private String breed;
 
-
-    
     public Pet() {
     }
 

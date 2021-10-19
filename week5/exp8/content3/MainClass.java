@@ -6,22 +6,27 @@ public class MainClass {
     static Scanner sc = new Scanner(System.in);
 
     public static void main(String[] args) {
-        BookDataSet bookDataSet = new BookDataSet();
-        Book[] books = bookDataSet.getBooks();
 
+        BookDao bd = new BookDaoImpl();
+
+        Book[] books = bd.queryBooks();
         System.out.println("站点商品明细：");
-        for (Book book : books) {
-            System.out.println(book);
+        for (int i = 0; i < books.length; i++) {
+            if (books[i] != null) {
+                System.out.println(books[i]);
+            }
         }
 
         System.out.println("请输入想要查询的书名：");
         String name = sc.next();
-        Book b = bookDataSet.queryByName(name);
+        Book b = bd.queryByName(name);
         if (b != null) {
             System.out.println(b);
         } else {
             System.out.println("查无此书");
         }
 
+
+        
     }
 }

@@ -4,7 +4,7 @@ public class BookDataSet {
     private Book[] books;// 书籍数据
 
     public BookDataSet() {
-        books = new Book[4];
+        books = new Book[10];
         Category category1 = new Category(1, "工具类", "软件编程");
         Category category2 = new Category(2, "小说类", "历史");
 
@@ -20,15 +20,6 @@ public class BookDataSet {
 
     public void setBooks(Book[] books) {
         this.books = books;
-    }
-
-    public Book queryByName(String name) {
-        for (int i = 0; i < books.length; i++) {
-            if (books[i].getName().equals(name)) {
-                return books[i];
-            }
-        }
-        return null;
     }
 
 }

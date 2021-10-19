@@ -6,8 +6,7 @@ public class MyArrayListTest {
     static Scanner sc = new Scanner(System.in);
 
     public static void main(String[] args) {
-        MyArrayList list = new MyArrayList();
-        list.init();
+        MyList list = new MyArrayList();
         int flag = 1;
         while (flag == 1) {
             flag = menu(list);
@@ -15,7 +14,7 @@ public class MyArrayListTest {
         sc.close();
     }
 
-    public static int menu(MyArrayList list) {
+    public static int menu(MyList list) {
         System.out.println("--------------");
         System.out.println("0.退出");
         System.out.println("1.清空线性表");
@@ -31,6 +30,7 @@ public class MyArrayListTest {
         int tmp = sc.nextInt();
         int num;
         String str;
+        MyArrayList list1 = (MyArrayList) list;
         switch (tmp) {
             case 0:
                 return 0;
@@ -63,7 +63,7 @@ public class MyArrayListTest {
             case 5:
                 System.out.println("请输入位置：");
                 num = sc.nextInt();
-                System.out.println("第" + num + "号元素是" + list.getElem(num));
+                System.out.println("第" + num + "号元素是" + list1.getElem(num));
                 break;
             case 6:
                 System.out.println("请输入欲替换的位置：");
@@ -73,7 +73,7 @@ public class MyArrayListTest {
                 list.set(num, str);
                 break;
             case 7:
-                list.visit();
+                list1.visit();
                 break;
             case 8:
                 System.out.println("线性表当前的长度为：" + list.size());
