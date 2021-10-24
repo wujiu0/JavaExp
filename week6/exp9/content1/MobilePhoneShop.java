@@ -38,10 +38,10 @@ public class MobilePhoneShop {
         this.mobilePhoneAmount = mobilePhoneAmount;
         this.mobilePhonePrice = mobilePhonePrice;
 
-        IdGenerator idGenerator = new IdGenerator();
-        for (int i = 0; i < 10; i++) {
-            System.out.println(idGenerator.getNextId());
-        }
+        // IdGenerator idGenerator = new IdGenerator();
+        // for (int i = 0; i < 10; i++) {
+        //     System.out.println(idGenerator.getNextId());
+        // }
 
         ihc1 = new InHouseConpons(new IdGenerator().getNextId(), 10000);
         ihc2 = new InHouseConpons(new IdGenerator().getNextId(), 20000);
