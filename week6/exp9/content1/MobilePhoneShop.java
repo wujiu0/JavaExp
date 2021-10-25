@@ -45,8 +45,10 @@ public class MobilePhoneShop {
 
         ihc1 = new InHouseConpons(new IdGenerator().getNextId(), 10000);
         ihc2 = new InHouseConpons(new IdGenerator().getNextId(), 20000);
-        // System.out.println(ihc1);
-        // System.out.println(ihc2);
+        InHouseConpons ihc3 = new InHouseConpons(new IdGenerator().getNextId(), 20000);
+        System.out.println(ihc1);
+        System.out.println(ihc2);
+        System.out.println(ihc3);
     }
 
     class InHouseConpons {
