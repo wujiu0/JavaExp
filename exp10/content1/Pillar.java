@@ -1,8 +1,8 @@
 package exp10.content1;
 
 public class Pillar {
-    GeometryBottom bottom;
-    double height;
+    private GeometryBottom bottom;
+    private double height;
 
     public Pillar(GeometryBottom bottom, double height) {
         this.bottom = bottom;
