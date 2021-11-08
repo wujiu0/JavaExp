@@ -47,7 +47,7 @@ public class QueryFrame extends JFrame {
         }
 
         String[] columnNames = { "书籍编号", "书籍名称", "书籍作者", "库存", "书籍分类" };
-        l_welcome = new JLabel("您好,", JLabel.LEFT);
+        l_welcome = new JLabel("您好,伍玖", JLabel.LEFT);
         l_city = new JLabel("来自于：    ", JLabel.RIGHT);
         l_bName = new JLabel("书籍名：");
         t_bName = new JTextField();
