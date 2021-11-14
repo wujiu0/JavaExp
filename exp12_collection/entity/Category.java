@@ -1,4 +1,4 @@
-package exp12.entity;
+package exp12_collection.entity;
 
 public class Category {
     private int id;// 类别id

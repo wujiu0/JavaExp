@@ -1,4 +1,4 @@
-package exp12.view;
+package exp12_collection.view;
 
 import javax.swing.JFrame;
 import javax.swing.JScrollPane;

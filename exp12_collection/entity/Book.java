@@ -1,4 +1,4 @@
-package exp12.entity;
+package exp12_collection.entity;
 
 public class Book {
     private String bid;// 书籍编号

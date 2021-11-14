@@ -1,4 +1,4 @@
-package exp12.dao;
+package exp12_collection.dao;
 
 import exp11.content2.entity.*;
 

@@ -1,4 +1,4 @@
-package exp12.view;
+package exp12_collection.view;
 
 import java.awt.*;
 import javax.swing.*;

@@ -1,9 +1,12 @@
-package exp12.db;
+package exp12_collection.db;
 
-import exp11.content2.entity.Book;
-import exp11.content2.entity.Category;
+import java.util.*;
+
+import exp11.content2.entity.*;
 
 public class BookDataSet {
+    private List<Book> bookList = new ArrayList<>();
+    
     private Book[] books;// 书籍数据
 
     public BookDataSet() {
