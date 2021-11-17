@@ -1,16 +1,18 @@
 package exp12_collection.dao;
 
-import exp11.content2.entity.*;
+import java.util.List;
+
+import exp12_collection.entity.*;
 
 public interface BookDao {
 
-    public Book[] queryBooks();
+    public List<Book> queryBooks();
 
     // 商品信息录入
     public boolean add(Book book);
 
     // 商品信息修改
-    public boolean modify(int index, Book book);
+    public Book set(int index, Book book);
 
     // 按id查询
     public Book queryById(String id);
@@ -20,5 +22,8 @@ public interface BookDao {
 
     // 按作者查询
     public Book queryByAuthor(String author);
+
+    // 按分类查询
+    public List<Book> queryByCategory(Category category);
 
 }

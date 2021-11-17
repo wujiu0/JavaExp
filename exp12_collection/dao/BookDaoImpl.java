@@ -1,40 +1,39 @@
 package exp12_collection.dao;
 
-import exp11.content2.db.BookDataSet;
-import exp11.content2.entity.*;
+import java.util.ArrayList;
+import java.util.List;
+
+import exp12_collection.db.BookDataSet;
+import exp12_collection.entity.*;
 
 public class BookDaoImpl implements BookDao {
-    BookDataSet bds = new BookDataSet();
 
-    public Book[] queryBooks() {
-        return bds.getBooks();
+    public List<Book> queryBooks() {
+        return BookDataSet.getBooks();
     }
 
     @Override
     public boolean add(Book book) {
-        Book[] books = bds.getBooks();
-        for (int i = 0; i < books.length; i++) {
-            if (books[i] == null) {
-                books[i] = book;
-                return true;
-            }
-        }
-        return false;
+        List<Book> books = BookDataSet.getBooks();
+
+        return books.add(book);
     }
 
     @Override
-    public boolean modify(int index, Book book) {
-        Book[] books = bds.getBooks();
-        books[index] = book;
-        return true;
+    public Book set(int index, Book book) {
+        List<Book> books = BookDataSet.getBooks();
+        return books.set(index, book);
     }
 
     @Override
     public Book queryByAuthor(String author) {
-        Book[] books = bds.getBooks();
-        for (int i = 0; i < books.length && books[i] != null; i++) {
-            if (books[i].getAuthor().equals(author)) {
-                return books[i];
+        List<Book> books = BookDataSet.getBooks();
+        for (int i = 0; i < books.size(); i++) {
+            Book b = books.get(i);
+            if (b != null) {
+                if (books.get(i).getAuthor().equals(author)) {
+                    return b;
+                }
             }
         }
         return null;
@@ -42,10 +41,13 @@ public class BookDaoImpl implements BookDao {
 
     @Override
     public Book queryById(String id) {
-        Book[] books = bds.getBooks();
-        for (int i = 0; i < books.length && books[i] != null; i++) {
-            if (books[i].getBid().equals(id)) {
-                return books[i];
+        List<Book> books = BookDataSet.getBooks();
+        for (int i = 0; i < books.size(); i++) {
+            Book b = books.get(i);
+            if (b != null) {
+                if (books.get(i).getAuthor().equals(id)) {
+                    return b;
+                }
             }
         }
         return null;
@@ -53,13 +55,32 @@ public class BookDaoImpl implements BookDao {
 
     @Override
     public Book queryByName(String name) {
-        Book[] books = bds.getBooks();
-        for (int i = 0; i < books.length && books[i] != null; i++) {
-            if (books[i].getName().equals(name)) {
-                return books[i];
+        List<Book> books = BookDataSet.getBooks();
+        for (int i = 0; i < books.size(); i++) {
+            Book b = books.get(i);
+            if (b != null) {
+                if (books.get(i).getAuthor().equals(name)) {
+                    return b;
+                }
             }
         }
         return null;
+    }
+
+    @Override
+    public List<Book> queryByCategory(Category category) {
+        List<Book> books = BookDataSet.getBooks();
+        List<Book> result = new ArrayList<>();
+
+        for (int i = 0; i < books.size(); i++) {
+            Book b = books.get(i);
+            if (b != null) {
+                if (books.get(i).getCategory().equals(category)) {
+                    result.add(b);
+                }
+            }
+        }
+        return result;
     }
 
 }

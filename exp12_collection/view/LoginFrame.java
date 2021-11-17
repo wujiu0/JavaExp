@@ -2,12 +2,19 @@ package exp12_collection.view;
 
 import java.awt.*;
 import java.awt.event.*;
+import java.util.Iterator;
+import java.util.Set;
+
 import javax.swing.*;
+
+import exp12_collection.db.*;
+import exp12_collection.entity.User;
 
 public class LoginFrame extends JFrame {
     private JPanel p1, p2;
     private JLabel l_userName, l_userType, l_password;
-    private JTextField t_userName, t_password;
+    private JTextField t_userName;
+    private JPasswordField t_password;
     private JComboBox<String> c_userType;
     private JButton b_login, b_reset, b_register;
 
@@ -34,7 +41,7 @@ public class LoginFrame extends JFrame {
         l_userType = new JLabel("用户类型", JLabel.CENTER);
         l_password = new JLabel("密码", JLabel.CENTER);
         t_userName = new JTextField();
-        t_password = new JTextField();
+        t_password = new JPasswordField();
         c_userType = new JComboBox<String>();
         c_userType.addItem("管理员");
         c_userType.addItem("普通用户");
@@ -56,7 +63,10 @@ public class LoginFrame extends JFrame {
         b_login.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                login();
+                String userName = t_userName.getText();
+                String password =new String(t_password.getPassword());
+                String userType = c_userType.getSelectedItem().toString();
+                login(userName, password, userType);
             }
         });
         b_reset.addActionListener(new ActionListener() {
@@ -77,8 +87,43 @@ public class LoginFrame extends JFrame {
         setVisible(true);
     }
 
-    public void login() {
-        new QueryFrame();
+    public void login(String username, String password, String userType) {
+        if (username.equals("")) {
+            JOptionPane.showMessageDialog(t_userName, "用户名不能为空", "错误提示", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        if (password.equals("")) {
+            JOptionPane.showMessageDialog(t_password, "密码不能为空", "错误提示", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+
+        Set<User> users = UserDataSet.getUsers();
+        Iterator<User> it = users.iterator();
+        while (it.hasNext()) {
+            User user = it.next();
+
+            if (!(user.getId().equals(username) && user.getPassword().equals(password))) {
+                t_userName.setText("");
+                t_password.setText("");
+                continue;
+            }
+
+            if (!(userType.equals(user.getUserType()))) {
+                JOptionPane.showMessageDialog(c_userType, "身份选择错误", "错误提示", JOptionPane.WARNING_MESSAGE);
+                t_userName.setText("");
+                t_password.setText("");
+                return;
+            }
+
+            if (userType.equals("管理员")) {
+                new QueryFrame(user);
+                return;
+            } else {
+                new QueryFrame(user);
+                return;
+            }
+        }
+        JOptionPane.showMessageDialog(t_userName, "用户名或密码错误", "错误提示", JOptionPane.WARNING_MESSAGE);
     }
 
     public static void main(String[] args) {

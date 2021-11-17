@@ -1,15 +1,17 @@
 package exp12_collection.view;
 
+import java.util.Set;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
-import exp11.content2.entity.User;
+import exp12_collection.db.UserDataSet;
+import exp12_collection.entity.User;
 
 public class RegisterFrame extends JFrame {
     private JLabel l_id, l_name, l_password, l_repassword, l_sex, l_city;
     private JTextField t_id, t_name;
-    private JPasswordField p_password, p_repassword;
+    private JPasswordField t_password, t_repassword;
     private JRadioButton r_sex1, r_sex2;
     private JComboBox<String> c_city;
     private JButton b_register, b_reset;
@@ -36,8 +38,8 @@ public class RegisterFrame extends JFrame {
 
         t_id = new JTextField();
         t_name = new JTextField();
-        p_password = new JPasswordField();
-        p_repassword = new JPasswordField();
+        t_password = new JPasswordField();
+        t_repassword = new JPasswordField();
 
         r_sex1 = new JRadioButton("男", true);
         r_sex2 = new JRadioButton("女");
@@ -58,9 +60,9 @@ public class RegisterFrame extends JFrame {
         add(l_name);
         add(t_name);
         add(l_password);
-        add(p_password);
+        add(t_password);
         add(l_repassword);
-        add(p_repassword);
+        add(t_repassword);
         add(l_sex);
         add(new JPanel() {
             {
@@ -77,28 +79,24 @@ public class RegisterFrame extends JFrame {
         b_register.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // 两次密码不一致的处理
-                if (!new String(p_password.getPassword()).equals(new String(p_repassword.getPassword()))) {
-                    JOptionPane.showMessageDialog(p_repassword, "两次密码不一致", "错误提示", JOptionPane.WARNING_MESSAGE);
-                    p_password.setText("");
-                    p_repassword.setText("");
-                } else {
-                    String id = t_id.getText();
-                    String name = t_name.getText();
-                    String password = new String(p_password.getPassword());
-                    String sex = "";
-                    if (r_sex1.isSelected()) {
-                        sex = "男";
-                    } else if (r_sex2.isSelected()) {
-                        sex = "女";
-                    }
-                    String city = (String) c_city.getSelectedItem();
+                String id = t_id.getText();
+                String name = t_name.getText();
+                String password = new String(t_password.getPassword());
+                String rePassword = new String(t_repassword.getPassword());
+                String sex = "";
+                if (r_sex1.isSelected()) {
+                    sex = "男";
+                } else if (r_sex2.isSelected()) {
+                    sex = "女";
+                }
+                String city = (String) c_city.getSelectedItem();
 
-                    User u = new User(id, name, password, sex, city, "userType");
-                    String[][] Users = { { u.getId(), u.getName(), u.getPassword(), u.getSex(), u.getCity() } };
-                    new InformationFrame(Users);
+                // 判断输入是否为空
+                if (isEmpty(id, name, password, rePassword)) {
+                    return;
                 }
 
+                register(id, name, password, rePassword, sex, city);
             }
         });
         b_reset.addActionListener(new ActionListener() {
@@ -106,10 +104,51 @@ public class RegisterFrame extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 t_id.setText("");
                 t_name.setText("");
-                p_password.setText("");
-                p_repassword.setText("");
+                t_password.setText("");
+                t_repassword.setText("");
             }
         });
     }
 
+    private boolean isEmpty(String id, String name, String password, String rePassword) {
+        if (id.equals("")) {
+            JOptionPane.showMessageDialog(t_id, "账号不能为空", "错误提示", JOptionPane.WARNING_MESSAGE);
+            return true;
+        }
+        if (name.equals("")) {
+            JOptionPane.showMessageDialog(t_id, "姓名不能为空", "错误提示", JOptionPane.WARNING_MESSAGE);
+            return true;
+        }
+        if (password.equals("") || rePassword.equals("")) {
+            JOptionPane.showMessageDialog(t_password, "密码不能为空", "错误提示", JOptionPane.WARNING_MESSAGE);
+            return true;
+        }
+        return false;
+    }
+
+    private void register(String id, String name, String password, String rePassword, String sex, String city) {
+
+        // 获取数据库中已存在的用户
+        Set<User> users = UserDataSet.getUsers();
+
+        // 判断用户是否已经存在
+        for (User user : users) {
+            if (user.getId().equals(id)) {
+                JOptionPane.showMessageDialog(t_id, "该用户已存在", "错误提示", JOptionPane.WARNING_MESSAGE);
+                t_id.setText("");
+                return;
+            }
+        }
+
+        // 两次密码不一致的处理
+        if (!password.equals(rePassword)) {
+            JOptionPane.showMessageDialog(t_repassword, "两次密码不一致", "错误提示", JOptionPane.WARNING_MESSAGE);
+            t_password.setText("");
+            t_repassword.setText("");
+            return;
+        }
+        User user = new User(id, name, password, sex, city, "普通用户");
+        UserDataSet.addUser(user);
+        JOptionPane.showMessageDialog(null, "注册成功", "提示", JOptionPane.INFORMATION_MESSAGE);
+    }
 }
