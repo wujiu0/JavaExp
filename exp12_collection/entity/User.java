@@ -7,6 +7,7 @@ public class User {
     private String sex;
     private String city;
     private String userType;
+    private ShoppingCart shoppingCart = new ShoppingCart();
 
     public User() {
     }
@@ -66,6 +67,10 @@ public class User {
 
     public void setUserType(String userType) {
         this.userType = userType;
+    }
+
+    public ShoppingCart getShoppingCart() {
+        return shoppingCart;
     }
 
     @Override

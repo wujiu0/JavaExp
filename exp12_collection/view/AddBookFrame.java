@@ -1,21 +1,12 @@
 package exp12_collection.view;
 
-import java.awt.Dimension;
-import java.awt.GridLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.*;
+import java.awt.event.*;
 
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
+import javax.swing.*;
 
-import exp12_collection.dao.BookDao;
-import exp12_collection.dao.BookDaoImpl;
-import exp12_collection.entity.Book;
-import exp12_collection.entity.Category;
+import exp12_collection.dao.*;
+import exp12_collection.entity.*;
 
 public class AddBookFrame extends JFrame {
     private JLabel l_id, l_name, l_author, l_number, l_category;
@@ -82,16 +73,13 @@ public class AddBookFrame extends JFrame {
                 BookDao bd = new BookDaoImpl();
                 bd.add(book);
                 // for (Book booki : bd.queryBooks()) {
-                //     System.out.println(booki);
+                // System.out.println(booki);
                 // }
-                JOptionPane.showMessageDialog(b_add, "添加成功", "提示", JOptionPane.OK_OPTION);
+                JOptionPane.showMessageDialog(b_add, "添加成功", "提示", JOptionPane.INFORMATION_MESSAGE);
 
             }
 
         });
     }
 
-    public static void main(String[] args) {
-        new AddBookFrame();
-    }
 }

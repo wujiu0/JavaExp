@@ -45,7 +45,7 @@ public class BookDaoImpl implements BookDao {
         for (int i = 0; i < books.size(); i++) {
             Book b = books.get(i);
             if (b != null) {
-                if (books.get(i).getAuthor().equals(id)) {
+                if (books.get(i).getBid().equals(id)) {
                     return b;
                 }
             }
